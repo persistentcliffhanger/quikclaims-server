@@ -2,6 +2,7 @@ package com.allstate.quikclaimsserver.domain;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Objects;
 
 
 @Entity
@@ -12,7 +13,6 @@ public class Claim {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String policyNumber;
     private String customerName;
     private String claimType;
@@ -178,6 +178,41 @@ public class Claim {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    @Override
+    public String toString() {
+        return "Claim{" +
+                "id=" + id +
+                ", policyNumber='" + policyNumber + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", claimType='" + claimType + '\'' +
+                ", claimDate=" + claimDate +
+                ", estClaimAmt=" + estClaimAmt +
+                ", address='" + address + '\'' +
+                ", vehicleMake='" + vehicleMake + '\'' +
+                ", vehicleModel='" + vehicleModel + '\'' +
+                ", vehicleYear='" + vehicleYear + '\'' +
+                ", petType='" + petType + '\'' +
+                ", petBreed='" + petBreed + '\'' +
+                ", claimDescription='" + claimDescription + '\'' +
+                ", claimReason='" + claimReason + '\'' +
+                ", claimStatus='" + claimStatus + '\'' +
+                ", imageURL='" + imageURL + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Claim claim = (Claim) o;
+        return Objects.equals(id, claim.id) && Objects.equals(policyNumber, claim.policyNumber) && Objects.equals(customerName, claim.customerName) && Objects.equals(claimType, claim.claimType) && Objects.equals(claimDate, claim.claimDate) && Objects.equals(estClaimAmt, claim.estClaimAmt) && Objects.equals(address, claim.address) && Objects.equals(vehicleMake, claim.vehicleMake) && Objects.equals(vehicleModel, claim.vehicleModel) && Objects.equals(vehicleYear, claim.vehicleYear) && Objects.equals(petType, claim.petType) && Objects.equals(petBreed, claim.petBreed) && Objects.equals(claimDescription, claim.claimDescription) && Objects.equals(claimReason, claim.claimReason) && Objects.equals(claimStatus, claim.claimStatus) && Objects.equals(imageURL, claim.imageURL);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, policyNumber, customerName, claimType, claimDate, estClaimAmt, address, vehicleMake, vehicleModel, vehicleYear, petType, petBreed, claimDescription, claimReason, claimStatus, imageURL);
     }
 }
 
